@@ -1,6 +1,6 @@
 # AutoUpdateProject
 
-[![](https://jitpack.io/v/MZCretin/AutoUpdateProject.svg)](https://jitpack.io/#MZCretin/AutoUpdateProject)
+[![](https://jitpack.io/v/mrladeia/AutoUpdateProject.svg)](https://jitpack.io/#mrladeia/AutoUpdateProject)
 
 ### 系列
 
@@ -80,7 +80,7 @@ allprojects { repositories { ... maven { url 'https://jitpack.io' } } }
 
 **Step 2.** Add the dependency
 ```gradle
-    dependencies { implementation 'com.github.MZCretin:AutoUpdateProject:latest_version' }
+    dependencies { implementation 'com.github.mrladeia:AutoUpdateProject:latest_version' }
 ```
 
 **Step 3.** Init it in BaseApplication or MainActivity before using it.And then register BaseApplication in AndroidManifest(Don't forget it).
