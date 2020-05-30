@@ -66,9 +66,9 @@ public class DownloadService extends Service {
                         builder.setSmallIcon(R.mipmap.ic_launcher); //设置图标
                     }
                     if ( TextUtils.isEmpty(appName) )
-                        contentView.setTextViewText(R.id.fileName, "正在下载...");
+                        contentView.setTextViewText(R.id.fileName, "Baixando...");
                     else
-                        contentView.setTextViewText(R.id.fileName, appName + "正在下载...");
+                        contentView.setTextViewText(R.id.fileName, appName + " Baixando...");
                     builder.setContent(contentView);
                     mNotification = builder.build();
                     mNotificationManager.notify(NOTIFY_ID, mNotification);
@@ -80,10 +80,10 @@ public class DownloadService extends Service {
                 downFileAsyncTask = new DownFileAsyncTask();
                 downFileAsyncTask.execute(fileName);
             } else {
-                Toast.makeText(mContext, "没有挂载的SD卡", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Nenhum cartão SD montado", Toast.LENGTH_SHORT).show();
             }
         } else {
-            throw new RuntimeException("下载地址不能为空");
+            throw new RuntimeException("O endereço de download não pode estar vazio");
         }
     }
 
@@ -155,7 +155,7 @@ public class DownloadService extends Service {
         protected void onCancelled() {
             super.onCancelled();
             if ( !autoCancel )
-                Toast.makeText(mContext, "已取消下载", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "Download cancelado", Toast.LENGTH_LONG).show();
         }
 
         @Override

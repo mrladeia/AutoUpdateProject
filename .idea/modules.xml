@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AutoUpdateProject.iml" filepath="$PROJECT_DIR$/AutoUpdateProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AutoUpdateProject-app.iml" filepath="$PROJECT_DIR$/app/AutoUpdateProject-app.iml" group="AutoUpdateProject/app" />
+      <module fileurl="file://$PROJECT_DIR$/cretinautoupdatelibrary/AutoUpdateProject-cretinautoupdatelibrary.iml" filepath="$PROJECT_DIR$/cretinautoupdatelibrary/AutoUpdateProject-cretinautoupdatelibrary.iml" group="AutoUpdateProject/cretinautoupdatelibrary" />
+      <module fileurl="file://$PROJECT_DIR$/GitHub-AutoUpdateProject.iml" filepath="$PROJECT_DIR$/GitHub-AutoUpdateProject.iml" group="AutoUpdateProject" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cretinautoupdatelibrary/cretinautoupdatelibrary.iml" filepath="$PROJECT_DIR$/cretinautoupdatelibrary/cretinautoupdatelibrary.iml" />
     </modules>

@@ -376,7 +376,7 @@ public class CretinAutoUpdateUtils {
                     showUpdateDialog(data, true, false);
                 } else {
                     if ( showToast ) {
-                        Toast.makeText(mContext, "已是最新版本", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Já está na versão mais recente", Toast.LENGTH_SHORT).show();
                     }
                 }
             } else if ( data.isForceUpdate == 1 ) {
@@ -399,7 +399,7 @@ public class CretinAutoUpdateUtils {
                     }
                 } else {
                     if ( showToast ) {
-                        Toast.makeText(mContext, "已是最新版本", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Já está na versão mais recente", Toast.LENGTH_SHORT).show();
                     }
                 }
             } else if ( data.isForceUpdate == 0 ) {
@@ -416,12 +416,12 @@ public class CretinAutoUpdateUtils {
                     }
                 } else {
                     if ( showToast ) {
-                        Toast.makeText(mContext, "已是最新版本", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Já está na versão mais recente", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         } else {
-            Toast.makeText(mContext, "网络错误", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Erro de rede", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -477,7 +477,7 @@ public class CretinAutoUpdateUtils {
                             listCodes.add(finalVersionName);
                         }
                         saveArray(listCodes);
-                        Toast.makeText(mContext, "此版本已忽略", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Esta versão foi ignorada", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -722,10 +722,10 @@ public class CretinAutoUpdateUtils {
                             e.printStackTrace();
                         }
                     } else {
-                        Toast.makeText(mContext, "没有挂载的SD卡", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Nenhum cartão SD encontrado", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(mContext, "下载路径为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "O caminho do download está vazio", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -740,7 +740,7 @@ public class CretinAutoUpdateUtils {
         }
         try {
             if ( !file.createNewFile() ) {
-                Toast.makeText(mContext, "文件创建失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Falha na criação do arquivo", Toast.LENGTH_SHORT).show();
             } else {
                 //文件创建成功
                 intentService = new Intent(mContext, DownloadService.class);
@@ -815,7 +815,7 @@ public class CretinAutoUpdateUtils {
         protected void downloadFail(String e) {
             if ( progressDialog != null )
                 progressDialog.dismiss();
-            Toast.makeText(mContext, "下载失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, ResUtils.getString(R.string.apk_file_download_fail), Toast.LENGTH_SHORT).show();
         }
     }
 
