@@ -5,7 +5,7 @@
     <string name="tips_new_version">Nova versão encontrada...</string>
     <string name="download_fail">Falha ao baixar</string>
     <string name="has_download">Transferido</string>
-    <string name="permission_to_store">Sem permissão de armazenamento</string>
+    <string name="permission_to_store">Sem permissão de armazenamento, deseja permitir?</string>
     <string name="cancel">Cancelar</string>
     <string name="go_to">Ir para</string>
     <string name="wifi_tips">Você está em uma conexão que não é WIFI, deseja continuar?</string>
