@@ -1,18 +1,18 @@
 <resources>
     <string name="app_name">CretinAutoUpdateLibrary</string>
-    <string name="btn_cancel_update">下次再说</string>
-    <string name="btn_update_now">立即更新</string>
-    <string name="tips_new_version">发现新版本...</string>
-    <string name="download_fail">下载失败</string>
-    <string name="has_download">已下载</string>
-    <string name="permission_to_store">暂无储存权限，是否前往打开</string>
-    <string name="cancel">取消</string>
-    <string name="go_to">前往</string>
-    <string name="wifi_tips">当前处于非WIFI连接，是否继续？</string>
-    <string name="tips">提示</string>
-    <string name="confirm">确定</string>
-    <string name="downloading">下载中...</string>
-    <string name="installing">安装中...</string>
-    <string name="install">安装</string>
-    <string name="apk_file_download_fail">安装文件下载失败</string>
+    <string name="btn_cancel_update">Agora não</string>
+    <string name="btn_update_now">Atualiar agora</string>
+    <string name="tips_new_version">Nova versão encontrada...</string>
+    <string name="download_fail">Falha ao baixar</string>
+    <string name="has_download">Transferido</string>
+    <string name="permission_to_store">Sem permissão de armazenamento</string>
+    <string name="cancel">Cancelar</string>
+    <string name="go_to">Ir para</string>
+    <string name="wifi_tips">Você está em uma conexão que não é WIFI, deseja continuar?</string>
+    <string name="tips">Pronto</string>
+    <string name="confirm">Confirmar</string>
+    <string name="downloading">Baixando...</string>
+    <string name="installing">Instalando...</string>
+    <string name="install">Instalar</string>
+    <string name="apk_file_download_fail">Falha no download do arquivo</string>
 </resources>
