@@ -160,7 +160,7 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
                     .setProdVersionName("2.3.1")
                     .setMd5Check("68919BF998C29DA3F5BD2C0346281AC0")
                     .setForceUpdateFlag(listModel.isForceUpdate() ? 1 : 0)
-                    .setUpdateLog("1、优化细节和体验，更加稳定\n2、引入大量优质用户\r\n3、修复已知bug\n4、风格修改");
+                    .setUpdateLog("1 Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n2 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.\n3 It has survived not only five centuries, but also the leap into electronic typesetting.");
             AppUpdateUtils.getInstance().getUpdateConfig().setUiThemeType(listModel.getUiTypeValue());
             //打开文件MD5校验
             AppUpdateUtils.getInstance().getUpdateConfig().setNeedFileMD5Check(true);
