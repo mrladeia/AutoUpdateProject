@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CretinAutoUpdateLibrary</string>
     <string name="btn_cancel_update">Agora não</string>
-    <string name="btn_update_now">Atualizar agora</string>
+    <string name="btn_update_now">Atualizar</string>
     <string name="tips_new_version">Nova versão encontrada…</string>
     <string name="download_fail">Falha ao baixar</string>
     <string name="has_download">Transferido</string>
