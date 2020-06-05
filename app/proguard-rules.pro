@@ -15,3 +15,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keep class com.cretin.**
+-keepclassmembers class com.cretin.** { *; }
+-keepclasseswithmembernames class com.cretin.** { *; }
