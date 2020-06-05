@@ -16,6 +16,6 @@
 #   public *;
 #}
 
--keep class com.cretin.**
--keepclassmembers class com.cretin.** { *; }
--keepclasseswithmembernames class com.cretin.** { *; }
+#-keep class com.cretin.**
+#-keepclassmembers class com.cretin.** { *; }
+#-keepclasseswithmembernames class com.cretin.** { *; }
