@@ -18,6 +18,8 @@ import com.cretin.www.cretinautoupdatelibrary.utils.LogUtils;
 import com.cretin.www.cretinautoupdatelibrary.utils.ResUtils;
 import com.cretin.www.cretinautoupdatelibrary.utils.RootActivity;
 
+import java.util.concurrent.TimeUnit;
+
 public class UpdateType8Activity extends RootActivity {
 
     private TextView tvMsg;
@@ -35,8 +37,6 @@ public class UpdateType8Activity extends RootActivity {
 
         setDataAndListener();
     }
-
-    int counter = 10;
 
     private void setDataAndListener() {
         tvMsg.setText(downloadInfo.getUpdateLog());
@@ -82,12 +82,17 @@ public class UpdateType8Activity extends RootActivity {
                 @Override
                 public void run() {
                     try {
-                        tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + counter-- + "s)");
-                        if (counter <= 0) download();
+                        for (int i = 10; i >= 0; i--) {
+                            tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + i + "s)");
+                            TimeUnit.SECONDS.sleep(1);
+                        }
+
+                        download();
                     } catch (Exception ignore) {
+                        tvBtn2.setText(ResUtils.getString(R.string.btn_update_now));
                     }
                 }
-            }, 1000);
+            }, 2000);
         }
     }
 
