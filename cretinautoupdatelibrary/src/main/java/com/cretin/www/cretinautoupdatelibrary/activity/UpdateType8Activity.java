@@ -1,8 +1,8 @@
 package com.cretin.www.cretinautoupdatelibrary.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,11 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cretin.www.cretinautoupdatelibrary.utils.LogUtils;
 import com.cretin.www.cretinautoupdatelibrary.R;
 import com.cretin.www.cretinautoupdatelibrary.interfaces.AppDownloadListener;
 import com.cretin.www.cretinautoupdatelibrary.model.DownloadInfo;
 import com.cretin.www.cretinautoupdatelibrary.utils.AppUtils;
+import com.cretin.www.cretinautoupdatelibrary.utils.LogUtils;
 import com.cretin.www.cretinautoupdatelibrary.utils.ResUtils;
 import com.cretin.www.cretinautoupdatelibrary.utils.RootActivity;
 
@@ -36,10 +36,12 @@ public class UpdateType8Activity extends RootActivity {
         setDataAndListener();
     }
 
+    int counter = 10;
+
     private void setDataAndListener() {
         tvMsg.setText(downloadInfo.getUpdateLog());
         tvMsg.setMovementMethod(ScrollingMovementMethod.getInstance());
-        tvVersion.setText("v"+downloadInfo.getProdVersionName());
+        tvVersion.setText("v" + downloadInfo.getProdVersionName());
 
         if (downloadInfo.isForceUpdateFlag()) {
             ivClose.setVisibility(View.GONE);
@@ -74,6 +76,19 @@ public class UpdateType8Activity extends RootActivity {
                 download();
             }
         });
+
+        if (downloadInfo.isForceUpdateFlag()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + counter-- + "s)");
+                        if (counter <= 0) download();
+                    } catch (Exception ignore) {
+                    }
+                }
+            }, 1000);
+        }
     }
 
     private void findView() {
@@ -89,7 +104,7 @@ public class UpdateType8Activity extends RootActivity {
         return new AppDownloadListener() {
             @Override
             public void downloading(int progress) {
-                tvBtn2.setText(ResUtils.getString(R.string.downloading) + progress + "%");
+                tvBtn2.setText(ResUtils.getString(R.string.downloading) + " " + progress + "%");
             }
 
             @Override
@@ -100,7 +115,7 @@ public class UpdateType8Activity extends RootActivity {
 
             @Override
             public void downloadComplete(String path) {
-                tvBtn2.setText(ResUtils.getString(R.string.btn_update_now));
+                tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (10s)");
             }
 
             @Override
