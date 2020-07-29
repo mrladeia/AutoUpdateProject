@@ -28,6 +28,8 @@ public class UpdateType8Activity extends RootActivity {
     private TextView tvBtn1;
     private TextView tvVersion;
 
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class UpdateType8Activity extends RootActivity {
     }
 
     private void setDataAndListener() {
+        mHandler = new Handler();
         tvMsg.setText(downloadInfo.getUpdateLog());
         tvMsg.setMovementMethod(ScrollingMovementMethod.getInstance());
         tvVersion.setText("v" + downloadInfo.getProdVersionName());
@@ -73,28 +76,42 @@ public class UpdateType8Activity extends RootActivity {
             @Override
             public void onClick(View v) {
                 //右边的按钮
+                mHandler.removeCallbacks(autoUpdateRunnable);
                 download();
             }
         });
 
         if (downloadInfo.isForceUpdateFlag()) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        for (int i = 10; i >= 0; i--) {
-                            tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + i + "s)");
-                            TimeUnit.SECONDS.sleep(1);
-                        }
-
-                        download();
-                    } catch (Exception ignore) {
-                        tvBtn2.setText(ResUtils.getString(R.string.btn_update_now));
-                    }
-                }
-            }, 2000);
+            mHandler.postDelayed(autoUpdateRunnable, 2000);
         }
     }
+
+    private Runnable autoUpdateRunnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (tvBtn2 != null) {
+
+                    for (int i = 10; i >= 0; i--) {
+
+                        final int second = i;
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + second + "s)");
+                            }
+                        });
+
+                        TimeUnit.SECONDS.sleep(1);
+                    }
+
+                    download();
+                }
+            } catch (Exception ignore) {
+            }
+        }
+    };
 
     private void findView() {
         tvMsg = findViewById(R.id.tv_content);
