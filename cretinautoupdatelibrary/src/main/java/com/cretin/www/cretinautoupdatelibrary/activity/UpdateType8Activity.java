@@ -2,7 +2,7 @@ package com.cretin.www.cretinautoupdatelibrary.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,8 +18,6 @@ import com.cretin.www.cretinautoupdatelibrary.utils.LogUtils;
 import com.cretin.www.cretinautoupdatelibrary.utils.ResUtils;
 import com.cretin.www.cretinautoupdatelibrary.utils.RootActivity;
 
-import java.util.concurrent.TimeUnit;
-
 public class UpdateType8Activity extends RootActivity {
 
     private TextView tvMsg;
@@ -28,7 +26,8 @@ public class UpdateType8Activity extends RootActivity {
     private TextView tvBtn1;
     private TextView tvVersion;
 
-    private Handler mHandler;
+    private CountDownTimer autoUpdateTimer;
+    private int countdown = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,6 @@ public class UpdateType8Activity extends RootActivity {
     }
 
     private void setDataAndListener() {
-        mHandler = new Handler();
         tvMsg.setText(downloadInfo.getUpdateLog());
         tvMsg.setMovementMethod(ScrollingMovementMethod.getInstance());
         tvVersion.setText("v" + downloadInfo.getProdVersionName());
@@ -76,42 +74,38 @@ public class UpdateType8Activity extends RootActivity {
             @Override
             public void onClick(View v) {
                 //右边的按钮
-                mHandler.removeCallbacks(autoUpdateRunnable);
+                autoUpdateTimer.cancel();
+                tvBtn2.setText(ResUtils.getString(R.string.btn_update_now));
+
                 download();
             }
         });
 
         if (downloadInfo.isForceUpdateFlag()) {
-            mHandler.postDelayed(autoUpdateRunnable, 2000);
+            autoUpdate();
         }
     }
 
-    private Runnable autoUpdateRunnable = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                if (tvBtn2 != null) {
 
-                    for (int i = 10; i >= 0; i--) {
+    private void autoUpdate() {
+        try {
 
-                        final int second = i;
+            autoUpdateTimer = new CountDownTimer(10000, 1000) {
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + second + "s)");
-                            }
-                        });
+                public void onTick(long millisUntilFinished) {
+                    tvBtn2.setText(ResUtils.getString(R.string.btn_update_now) + " (" + countdown + "s)");
+                    countdown--;
+                }
 
-                        TimeUnit.SECONDS.sleep(1);
-                    }
-
+                public void onFinish() {
                     download();
                 }
-            } catch (Exception ignore) {
-            }
+
+            }.start();
+
+        } catch (Exception ignore) {
         }
-    };
+    }
 
     private void findView() {
         tvMsg = findViewById(R.id.tv_content);
